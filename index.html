@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="app">
+        <h1>{{title}}</h1>
+        <input type="text" v-model="newColor" @keyup.enter="addColor">
+        <button @click="addColor">Add</button>
+
+        <ul>
+            <li v-for="color of colors">
+                <input type="number" v-model.number="color.stock">
+                {{color.name}} - {{color.stock}}
+                <button @click="color.stock++">+</button>
+
+                <span v-if="color.stock === 0">- sorry we don't have stock</span>
+            </li>
+
+        </ul>
+        <h5>Total:{{totalColors}}</h5>
+
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
