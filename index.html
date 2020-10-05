@@ -1,32 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue 3</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/vue@next"></script>
 </head>
 <body>
+  <div id="app">
+    <h1 >
+      {{capitalLetters}}
+    </h1>
+    <p>
+      {{quantity}}
+    </p>
+    <a :href="link">Go to youtube</a>
+    <p v-if="state"> active</p>
+    <p v-else>Out</p>
+    <hr>
+    <h2 
+      class="bg-dark"
+      :class="quantityColor"
+    >
+      Quantity: {{quantity}}
+    </h2>
     
-    <div id="app">
-        <h1>{{title}}</h1>
-        <input type="text" v-model="newColor" @keyup.enter="addColor">
-        <button @click="addColor">Add</button>
+    <hr>
 
-        <ul>
-            <li v-for="color of colors">
-                <input type="number" v-model.number="color.stock">
-                {{color.name}} - {{color.stock}}
-                <button @click="color.stock++">+</button>
+    <p 
+      v-for="(item, index) in services"
+      :key="index"
+    >
+      {{item}}
+    </p>
 
-                <span v-if="color.stock === 0">- sorry we don't have stock</span>
-            </li>
+    <hr>
 
-        </ul>
-        <h5>Total:{{totalColors}}</h5>
+    <button 
+      @click="addBalance"
+    >
+      Add balance
+    </button>
+    <button
+      @click="decreaseBalance(50)" 
+      :disable="disable"
+    >
+      Decrease Balance
+    </button>
 
-    </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script src="./main.js"></script>
+  </div>
+  <script src="main.js"></script>
+  <script>
+    const mountedApp = app.mount ('#app')
+  </script>
 </body>
 </html>

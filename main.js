@@ -1,31 +1,39 @@
-const app = new Vue ({
-    el: '#app',
-    data:{
-        title: "tu mama no me quiere, por eso le voy a regalar colores",
-        colors: [
-            {name: "yellow", stock: 0},
-            {name: "blue", stock: 10},
-            {name: "green", stock: 5}
-         ],
-         newColor:"",
-         total:0
-    },
-    methods:{
-        addColor (){
-            this.colors.push({
-                name: this.newColor,
-                stock: 0
-            })
-            this.newColor=""    
-        }
-    },
-    computed:{
-       totalColors(){
-           this.total = 0;
-           for(color of this.colors){
-               this.total = this.total + color.stock
-           }
-           return this.total
-       } 
+const app = Vue.createApp({
+  data (){
+    return {
+      title: 'This a Hello World',
+      quantity: 1000,
+      link: 'https://www.youtube.com/',
+      state: false,
+      services: ['transfer', 'pay', 'services'],
+      disable: false
+
     }
+  },
+  methods:{
+    addBalance (){
+      this.quantity = this.quantity +100
+    },
+    decreaseBalance (val){
+      if( this.quantity == 0){
+        alert ("Your balance it's cero")
+        this.disable = true
+        return 
+      }
+      this.quantity = this.quantity -val
+    }
+
+
+  },
+  computed:{
+    quantityColor(){
+      return this.quantity > 500 ? 'text-success' : 'text-danger'
+
+    },
+
+    capitalLetters(){
+      return  this.title.toUpperCase()
+    }
+  }
+
 })

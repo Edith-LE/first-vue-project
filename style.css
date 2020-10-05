@@ -1,0 +1,21 @@
+*{
+  overflow: hidden;
+  margin:0;
+  padding:0;
+}
+
+.bg-dark{
+
+  font-size: 24px;
+
+}
+
+.text-success{
+  background-color: rosybrown;
+  color: green;
+}
+
+.text-danger{
+  background-color: darkgrey;
+  color: red;
+}
